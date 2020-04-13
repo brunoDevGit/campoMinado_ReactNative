@@ -1,18 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import params from './src/params'
+import Field from './src/components/Field'
 
-export default function App() {
+
+// 18 x 12
+export default class App extends Component {
+  render()
+  {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+     
+      <Field></Field>
+      <Field opened></Field>
+      <Field></Field>
+      <Field label></Field>
+      <Field opened ></Field>
+      <Field opened nearMines={1} ></Field>
+      <Field opened nearMines={2} ></Field>
+      <Field opened nearMines={3} ></Field>
+      <Field opened nearMines={7}></Field>
+      
+      
+      
+
+      
+     
     </View>
+    
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    
     alignItems: 'center',
     justifyContent: 'center',
   },
