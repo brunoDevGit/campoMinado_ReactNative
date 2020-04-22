@@ -31,9 +31,9 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.board}>
-          <MineField board = {this.state.board}></MineField>
+          <MineField board={this.state.board}></MineField>
         </View>
-        
+
 
       </View>
 

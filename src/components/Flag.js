@@ -1,9 +1,9 @@
 import React from 'react'
-import {View,StyleSheet} from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 export default props => {
-    return(
-        <View style = { styles.container}>
+    return (
+        <View style={styles.container}>
             <View style={[styles.flagpole, props.bigger ? styles.flagpoleBigger : null]}></View>
             <View style={[styles.flag, props.bigger ? styles.flagBigger : null]}></View>
             <View style={[styles.base1, props.bigger ? styles.base1Bigger : null]}></View>
