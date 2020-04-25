@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, TouchableNativeFeedback,Alert } from 'react-native'
 import params from '../params'
 import Mine from './Mine'
 import Flag from './Flag'
@@ -11,7 +11,10 @@ export default props => {
     const styleField = [styles.field]
 
     if (opened) styleField.push(styles.opened)
-    if (exploded) styleField.push(styles.exploded)
+    if (exploded) {
+        
+        styleField.push(styles.exploded)
+    } 
     if (flagged) styleField.push(styles.flagged)
     if (!opened && !exploded) styleField.push(styles.regular)
 
@@ -23,13 +26,16 @@ export default props => {
         if (nearMines >= 6) color = '#ffb308'
     }
     return (
-        <View style={styleField}>
-            {!mined && opened && nearMines > 0 ?
-                <Text style={[styles.label,
-                { color: color }]}> {nearMines} </Text> : false}
-            {mined && opened ? <Mine /> : false}
-            {flagged && !opened ? <Flag /> : false}
-        </View>
+        <TouchableNativeFeedback onPress={props.onOpen}
+            onLongPress={props.onSelect}>
+            <View style={styleField}>
+                {!mined && opened && nearMines > 0 ?
+                    <Text style={[styles.label,
+                    { color: color }]}> {nearMines} </Text> : false}
+                {mined && opened ? <Mine /> : false}
+                {flagged && !opened ? <Flag /> : false}
+            </View>
+        </TouchableNativeFeedback>
     )
 
 }
@@ -40,17 +46,17 @@ const styles = StyleSheet.create({
         borderWidth: params.borderSize,
     },
     regular: {
-        backgroundColor: '#999',
-        borderLeftColor: '#CCC',
-        borderTopColor: '#CCC',
-        borderRightColor: '#333',
-        borderBottomColor: '#333',
+        backgroundColor: '#598935',
+        borderLeftColor: '#a9d751',
+        borderTopColor: '#a9d751',
+        borderRightColor: '#4a752d',
+        borderBottomColor: '#4a752d',
 
 
     },
     opened: {
-        backgroundColor: '#999',
-        borderColor: '#777',
+        backgroundColor: '#e4c1a3',
+        borderColor: '#C8A57F',
         alignItems: 'center',
         justifyContent: 'center',
     },
